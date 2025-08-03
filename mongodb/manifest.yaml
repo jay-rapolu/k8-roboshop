@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+spec:
+  selector:
+    app: mongodb
+    environment: dev
+  ports:
+  - port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  labels:
+    app: mongodb
+    environment: dev
+    tier: db
+spec:
+  namespace: roboshop
+  replicas: 2
+  selector:
+  matchlabels:
+    app: mongodb
+    environment: dev
+  template:
+    metadata:
+      labels:
+        app: mongodb
+        environment: dev
+    spec:
+      containers:
+      - name: mongodb
+        image: jay1303/mongodb
