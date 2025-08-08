@@ -7,8 +7,8 @@ spec:
     app: mongodb
     environment: dev
   ports:
-  - port: 80
-    targetPort: 80
+  - port: 80 #service port
+    targetPort: 80 #container port
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -22,7 +22,7 @@ spec:
   namespace: roboshop
   replicas: 2
   selector:
-  matchlabels:
+  matchLabels:
     app: mongodb
     environment: dev
   template:
