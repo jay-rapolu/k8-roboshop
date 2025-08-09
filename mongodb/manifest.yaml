@@ -1,36 +1,56 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: deployment
 metadata:
   name: mongo
-spec:
-  selector:
-    app: mongodb
-    environment: dev
-  ports:
-  - port: 80 #service port
-    targetPort: 80 #container port
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mongodb
   labels:
-    app: mongodb
-    environment: dev
+    component: mongodb
+    project: roboshop
     tier: db
+  annotations:
+    purpose: this is mongodb manifest file.
 spec:
   namespace: roboshop
   replicas: 2
   selector:
-  matchLabels:
-    app: mongodb
-    environment: dev
+    matchLabels:
+      component: mongodb
+      project: roboshop
+      tier: db
   template:
     metadata:
+      name: mongodb
       labels:
-        app: mongodb
-        environment: dev
+        component: mongodb
+        project: roboshop
+        tier: db
     spec:
       containers:
       - name: mongodb
         image: jay1303/mongodb
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+        ports:
+        - containerPort: 27017
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    component: mongodb
+    project: roboshop
+    tier: db
+spec:
+  namespace: roboshop
+  selector:
+    component: mongodb
+    project: roboshop
+    tier: db
+  ports:
+  - port: 27017
+    targetPort: 27017
