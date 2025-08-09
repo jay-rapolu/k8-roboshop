@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+namespace: roboshop
 metadata:
   name: mongo
   labels:
@@ -9,7 +10,6 @@ metadata:
   annotations:
     purpose: this is mongodb manifest file.
 spec:
-  namespace: roboshop
   replicas: 2
   selector:
     matchLabels:
@@ -39,14 +39,14 @@ spec:
 ---
 apiVersion: v1
 kind: Service
+namespace: roboshop 
 metadata:
   name: mongodb
   labels:
     component: mongodb
     project: roboshop
-    tier: db
+    tier: db 
 spec:
-  namespace: roboshop
   selector:
     component: mongodb
     project: roboshop
