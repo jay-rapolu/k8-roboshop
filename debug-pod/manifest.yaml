@@ -4,6 +4,7 @@ metadata:
   name: debug-pod
   labels:
     project: roboshop
+  namespace: roboshop
 spec:
   containers:
   - name: debug
