@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: jay1303/mongodb
+        image: jay1303/mongodb:v1
         resources:
           requests:
             cpu: "250m"
