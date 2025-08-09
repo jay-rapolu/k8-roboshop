@@ -8,8 +8,8 @@ metadata:
     tier: db
   annotations:
     purpose: this is mongodb manifest file.
-spec:
   namespace: roboshop
+spec:
   replicas: 2
   selector:
     matchLabels:
@@ -45,8 +45,8 @@ metadata:
     component: mongodb
     project: roboshop
     tier: db
-spec:
   namespace: roboshop
+spec:
   selector:
     component: mongodb
     project: roboshop
