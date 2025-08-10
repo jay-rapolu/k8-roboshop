@@ -103,13 +103,6 @@ spec:
         - name: nginx-conf-volume
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
-        resources:
-          requests:
-            cpu: "250m"
-            memory: "128Mi"
-          limits:
-            cpu: "500m"
-            memory: "256Mi"
         ports:
         - containerPort: 8080
       volumes:
