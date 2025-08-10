@@ -110,12 +110,12 @@ spec:
           limits:
             cpu: "500m"
             memory: "256Mi"
-        volumes:
-        - name: nginx-conf-volume
-          configMap:
-            name: frontend
         ports:
         - containerPort: 8080
+      volumes:
+      - name: nginx-conf-volume
+        configMap:
+          name: frontend
 ---
 apiVersion: v1
 kind: Service
@@ -134,4 +134,4 @@ spec:
     tier: web
   ports:
   - port: 80
-    containerPort: 8080          
+    targetPort: 8080          
