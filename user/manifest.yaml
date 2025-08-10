@@ -28,14 +28,14 @@ spec:
       component: user
       project: roboshop
       tier: app
-  template:
+  template:  
+    metadata:
+      name: user
+      labels:
+        component: user
+        project: roboshop
+        tier: app
     spec:
-      metadata:
-        name: user
-        labels:
-          component: user
-          project: roboshop
-          tier: app
       containers:
       - name: user
         image: jay1303/user:v1
