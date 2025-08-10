@@ -48,7 +48,7 @@ spec:
         - containerPort: 8080
         env:
         - configMapRef:
-          name: shipping
+            name: shipping
 ---
 apiVersion: v1
 kind: Service

@@ -1,44 +1,59 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: user
+  name: payment
   namespace: roboshop
   labels:
-    component: user
+    component: payment
     project: roboshop
     tier: app
 data:
-  MONGO: "true"
-  REDIS_URL: "redis://redis:6379"
-  MONGO_URL: "mongodb://mongodb:27017/users"
+  CART_HOST: cart
+  CART_PORT: 8080
+  USER_HOST: user
+  USER_PORT: 8080
+  AMQP_HOST: rabbitmq
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: payment
+  namespace: roboshop
+  labels:
+    component: payment
+    project: roboshop
+    tier: app
+data:
+  AMQP_USER: 'cm9ib3Nob3A='
+  AMQP_PASS: 'cm9ib3Nob3AxMjM='
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user
+  name: payment
   namespace: roboshop
   labels:
-    component: user
+    component: payment
     project: roboshop
     tier: app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      component: user
+      component: payment
       project: roboshop
       tier: app
   template:
+    metadata:
+      name: payment    
+      labels:
+        component: payment
+        project: roboshop
+        tier: app
     spec:
-      metadata:
-        name: user
-        labels:
-          component: user
-          project: roboshop
-          tier: app
       containers:
-      - name: user
-        image: jay1303/user:v1
+      - name: payment
+        image: jay1303/payment:v1
         resources:
           requests:
             cpu: "250m"
@@ -50,22 +65,24 @@ spec:
         - containerPort: 8080
         env:
         - configMapRef:
-            name: user
+            name: payment
+        - secretRef:
+            name: payment
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: user
+  name: payment
   namespace: roboshop
   labels:
-    component: user
+    component: payment
     project: roboshop
     tier: app
 spec:
   selector:
-    component: user
+    component: payment
     project: roboshop
     tier: app
   ports:
   - port: 8080
-    targetPort: 8080           
+    targetPort: 8080    
