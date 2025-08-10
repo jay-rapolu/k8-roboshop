@@ -54,13 +54,6 @@ spec:
       containers:
       - name: payment
         image: jay1303/payment:v1
-        resources:
-          requests:
-            cpu: "250m"
-            memory: "128Mi"
-          limits:
-            cpu: "500m"
-            memory: "256Mi"
         ports:
         - containerPort: 8080
         env:
