@@ -34,6 +34,7 @@ spec:
         component: mysql
         project: roboshop
         tier: db
+    spec:
       containers:
       - name: mysql
         image: jay1303/mysql:v1
