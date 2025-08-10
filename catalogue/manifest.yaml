@@ -23,7 +23,7 @@ metadata:
     description: This is catalogue microservice
   namespace: roboshop
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       component: catalogue

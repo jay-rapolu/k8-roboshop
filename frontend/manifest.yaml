@@ -82,7 +82,7 @@ metadata:
     project: roboshop
     tier: web
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       component: frontend

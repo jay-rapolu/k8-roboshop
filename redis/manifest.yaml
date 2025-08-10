@@ -10,7 +10,7 @@ metadata:
   annotations:
     description: This is redis microservice
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       component: redis
