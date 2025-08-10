@@ -95,6 +95,7 @@ spec:
         component: frontend
         project: roboshop
         tier: web
+    spec:
       containers:
       - name: frontend
         image: jay1303/frontend:v1
@@ -132,5 +133,5 @@ spec:
     project: roboshop
     tier: web
   ports:
-    port: 80
+  - port: 80
     containerPort: 8080          
