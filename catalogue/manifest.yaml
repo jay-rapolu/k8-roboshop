@@ -51,7 +51,7 @@ spec:
         - containerPort: 8080
         env:
         - configMapRef:
-            name: catalogue
+          name: catalogue
 ---
 apiVersion: v1
 kind: Service
