@@ -49,7 +49,7 @@ spec:
         - containerPort: 8080
         env:
         - configMapRef:
-            name: cart
+          name: cart
 ---
 apiVersion: v1
 kind: Service
