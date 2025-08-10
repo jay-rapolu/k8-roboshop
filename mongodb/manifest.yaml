@@ -27,13 +27,6 @@ spec:
       containers:
       - name: mongodb
         image: jay1303/mongodb:v1
-        resources:
-          requests:
-            cpu: "250m"
-            memory: "128Mi"
-          limits:
-            cpu: "500m"
-            memory: "256Mi"
         ports:
         - containerPort: 27017
 ---
