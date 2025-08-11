@@ -54,13 +54,11 @@ spec:
       containers:
       - name: payment
         image: joindevops/payment:v1
-        ports:
-        - containerPort: 8080
-        env:
+        envFrom:
         - configMapRef:
-          name: payment
+            name: payment
         - secretRef:
-          name: payment
+            name: payment
 ---
 apiVersion: v1
 kind: Service
@@ -77,5 +75,6 @@ spec:
     project: roboshop
     tier: app
   ports:
-  - port: 8080
+  - protocol: TCP
+    port: 8080
     targetPort: 8080    

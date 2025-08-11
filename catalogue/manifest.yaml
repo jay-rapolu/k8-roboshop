@@ -10,7 +10,6 @@ metadata:
 data:
   MONGO: "true"
   MONGO_URL: "mongodb://mongodb:27017/catalogue" 
-  CATALOGUE_URL: "http://catalogue:8080"   
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -41,11 +40,9 @@ spec:
       containers:
       - name: catalogue
         image: joindevops/catalogue:v1
-        ports:
-        - containerPort: 8080
-        env:
+        envFrom:
         - configMapRef:
-          name: catalogue
+            name: catalogue
 ---
 apiVersion: v1
 kind: Service
@@ -62,5 +59,6 @@ spec:
     project: roboshop
     tier: backend
   ports:
-  - port: 8080
+  - protocol: TCP
+    port: 8080
     targetPort: 8080

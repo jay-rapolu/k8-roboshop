@@ -103,8 +103,6 @@ spec:
         - name: nginx-conf-volume
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
-        ports:
-        - containerPort: 8080
       volumes:
       - name: nginx-conf-volume
         configMap:
@@ -126,5 +124,6 @@ spec:
     project: roboshop
     tier: web
   ports:
-  - port: 80
+  - protocol: TCP
+    port: 80
     targetPort: 8080          

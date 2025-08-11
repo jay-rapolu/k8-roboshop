@@ -38,8 +38,9 @@ spec:
       containers:
       - name: mysql
         image: joindevops/mysql:v1
-        ports:
-        - containerPort: 3306
+        envFrom:
+        - secretRef:
+            name: mysql
 ---
 apiVersion: v1
 kind: Service
@@ -56,5 +57,6 @@ spec:
     project: roboshop
     tier: db
   ports:
-  - port: 3306
+  - protocol: TCP
+    port: 3306
     targetPort: 3306                  
