@@ -61,5 +61,5 @@ spec:
     project: roboshop
     tier: backend
   ports:
-  - port: 8080
+  - port: 80
     targetPort: 8080
