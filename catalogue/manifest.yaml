@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: jay1303/catalogue:v1
+        image: joindevops/catalogue:v1
         ports:
         - containerPort: 8080
         env:
