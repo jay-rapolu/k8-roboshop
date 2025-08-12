@@ -39,7 +39,7 @@ spec:
         image: rabbitmq:3
         envFrom:
         - configMapRef:
-            rabbitmq
+            name: rabbitmq
 ---
 apiVersion: v1
 kind: Service
