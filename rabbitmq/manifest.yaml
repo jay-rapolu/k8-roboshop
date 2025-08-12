@@ -37,6 +37,9 @@ spec:
       containers:
       - name: rabbitmq
         image: rabbitmq:3
+        envFrom:
+        - configMapRef:
+            rabbitmq
 ---
 apiVersion: v1
 kind: Service
