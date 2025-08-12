@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: user
-        image: joindevops/user:v1
+        image: jay1303/user:v1
         ports:
         - containerPort: 8080
         envFrom:
